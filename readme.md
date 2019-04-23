@@ -64,3 +64,11 @@ npm install lodash
 * e.g `_.find( books , {id: args.id});` to find a specific book with matching id.  
 books => Array of objects  
 Source code: [server/schema/schema.js](server/schema/schema.js)
+
+### 5. Atlas: MongoDB
+* Login to [cloud mongodb](cloud.mongodb.com) Then  
+    1. Build a cluster
+    2. Add database user
+    3. add ip address to ip whitelist
+    4. connect
+* More Detail: [Atlas: MongoDB](https://codeforgeek.com/2018/03/mongodb-atlas-node-js/) 

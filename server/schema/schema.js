@@ -5,7 +5,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, 
 //which is similar to  var GraphQLObjectType = graphql.GraphQLObjectType ;
 
 //Dummy Data
-let books = [
+/* let books = [
     {name:'John Wick', genre:'action', id:'1',authorId:'3'},
     {name:'Shazam', genre:'DCEU', id:'2',authorId:'1'},
     {name:'Infinity War', genre:'MCU', id:'3',authorId:'2'},
@@ -18,7 +18,7 @@ let authors = [
     {name:'Billy Batson', age:40, id:'1'},
     {name:'Russo Brothers', age:60, id:'2'},
     {name:'David Leitch', age:50, id:'3'}
-];
+]; */
 
 //defining BookType and AuthorType
 const BookType = new GraphQLObjectType({
