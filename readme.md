@@ -69,6 +69,7 @@ Source code: [server/schema/schema.js](server/schema/schema.js)
 * Login to [cloud mongodb](cloud.mongodb.com) Then  
     1. Build a cluster
     2. Add database user
-    3. add ip address to ip whitelist
+    3. add ip address to ip whitelist  
+    (make sure to check ip address in whitelist matches with your devices ip address everytime when connecting to db)
     4. connect
 * More Detail: [Atlas: MongoDB](https://codeforgeek.com/2018/03/mongodb-atlas-node-js/) 

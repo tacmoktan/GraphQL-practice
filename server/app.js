@@ -11,7 +11,7 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 
 // replace the uri string with your connection string.
-const uri = "mongodb+srv://tashi:tashi@graphql-tashi-2ssyn.mongodb.net/test?retryWrites=true"
+const uri = "mongodb+srv://tashi:tashi@graphql-tashi-2ssyn.mongodb.net/test?retryWrites=true";
 MongoClient.connect(uri, { useNewUrlParser:true }, function(err, client) {
    
     if(err) {
