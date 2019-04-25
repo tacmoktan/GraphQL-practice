@@ -1,32 +1,23 @@
 const express = require('express');             //loads express module (more like function)
 const graphqlHTTP = require('express-graphql'); //loads graphqlHTTP function
 const schema = require('./schema/schema');      //loads schema.js
+const mongoose = require('mongoose');           //loads mongoose
 
 //creates express server
 const app = express();  
 
 // CONNECTION CODE START
-//connect to atlas database
+//NOTE: either use only mongoDB or use only mongoose to connect with atlas mongoDB, don't use both
+//using mongoose to connect with atlas mongoDB
 
-const MongoClient = require('mongodb').MongoClient;
+const connectionString= "mongodb+srv://tashi:tashi@graphql-tashi-2ssyn.mongodb.net/test?retryWrites=true";
 
-// replace the uri string with your connection string.
-const uri = "mongodb+srv://tashi:tashi@graphql-tashi-2ssyn.mongodb.net/test?retryWrites=true";
-MongoClient.connect(uri, { useNewUrlParser:true }, function(err, client) {
-   
-    if(err) {
-        console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-   }
+mongoose.connect(connectionString, { useNewUrlParser: true });
+mongoose.connection.once('open', () =>{
+    console.log('connected to database');
+})
 
-   console.log('Connected...');
-   
-   const collection = client.db("test").collection("devices");
-   // perform actions on the collection object
-   client.close();
-});
 // CONNECTION CODE END
-
-
 
 //setting up GraphQL endpoint (URL) / middleware
 app.use('/graphql', graphqlHTTP({               

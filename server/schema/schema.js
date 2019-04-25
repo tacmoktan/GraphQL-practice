@@ -1,7 +1,8 @@
 const graphql = require('graphql');     //loads graphql
 const _ = require('lodash');            //loads lodash library
 
-const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList } = graphql;  //destructuring
+const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull } = graphql;  
+//destructuring
 //which is similar to  var GraphQLObjectType = graphql.GraphQLObjectType ;
 
 const Book = require('../models/book');             //to interact with book in db
@@ -104,20 +105,20 @@ const Mutation = new GraphQLObjectType({
     name:'Mutation',
     fields:{
 
-        addAuthor:{
+        addAuthor: {
             type:AuthorType,
             args:{
-                name: { type: GraphQLString },
-                age: { type: GraphQLInt }
+                name: { type: new GraphQLNonNull(GraphQLString) },          //not null 
+                age: { type: new GraphQLNonNull(GraphQLInt)}
             },
 
             resolve( parent, args ){
-                let author = new Author({
+                let author = new Author({                   //creating new instance of Author model
                     name: args.name,
                     age: args.age
                 });
 
-                author.save();           //saves author to db
+                return author.save();           //saves author to db
             }
 
         },
@@ -125,9 +126,9 @@ const Mutation = new GraphQLObjectType({
         addBook: {
             type:BookType,
             args:{
-                name: {type: GraphQLString},
-                genre: {type: GraphQLString},
-                authorId: {type: GraphQLID}
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                genre: { type: new GraphQLNonNull(GraphQLString) },
+                authorId: {type: new GraphQLNonNull(GraphQLID) }
             },
 
             resolve( parent, args){
@@ -137,7 +138,7 @@ const Mutation = new GraphQLObjectType({
                     authorId: args.authorId
                 });
 
-                book.save();             //saves book to db, .save() is a method in mongoose.
+                return book.save();             //saves book to db, .save() is a method in mongoose.
             }
         }
 
