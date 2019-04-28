@@ -73,3 +73,6 @@ Source code: [server/schema/schema.js](server/schema/schema.js)
     (make sure to check ip address in whitelist matches with your devices ip address everytime when connecting to db)
     4. connect
 * More Detail: [Atlas: MongoDB](https://codeforgeek.com/2018/03/mongodb-atlas-node-js/) 
+
+### 6 Create React App
+* Visit here [create react app](https://github.com/facebook/create-react-app)
