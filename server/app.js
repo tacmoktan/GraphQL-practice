@@ -2,9 +2,12 @@ const express = require('express');             //loads express module (more lik
 const graphqlHTTP = require('express-graphql'); //loads graphqlHTTP function
 const schema = require('./schema/schema');      //loads schema.js
 const mongoose = require('mongoose');           //loads mongoose
-
+const cors = require('cors');
 //creates express server
 const app = express();  
+
+//allow cross origin requests
+app.use(cors());
 
 // CONNECTION CODE START
 //NOTE: either use only mongoDB or use only mongoose to connect with atlas mongoDB, don't use both
@@ -18,6 +21,8 @@ mongoose.connection.once('open', () =>{
 })
 
 // CONNECTION CODE END
+
+
 
 //setting up GraphQL endpoint (URL) / middleware
 app.use('/graphql', graphqlHTTP({               

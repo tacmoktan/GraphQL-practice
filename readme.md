@@ -74,5 +74,20 @@ Source code: [server/schema/schema.js](server/schema/schema.js)
     4. connect
 * More Detail: [Atlas: MongoDB](https://codeforgeek.com/2018/03/mongodb-atlas-node-js/) 
 
-### 6 Create React App
+### 6. Create React App
 * Visit here [create react app](https://github.com/facebook/create-react-app)
+
+### 7. Apollo Client (GraphQL Client)
+* React & GraphQL cannot understand one-another since GraphQL is not JS. But, apollo client understands both. 
+* Apollo Client works as an interface that uses GraphQL to request & retrieve data to & from server/database(atlas:mongodb) and fetch it to the React frontend.
+* [Apollo Client Installation Details](https://www.apollographql.com/docs/react/essentials/get-started#installation)  
+**Note:** Install it in the directory where react app is created.
+
+### 8. cors
+* cross origin resource sharing.
+* Request sent from (frontend) client's server is not accepted by (backend) Graphiql server. So inorder to allow that we use cors.  
+Installation:
+```
+npm install cors
+```
+e.g. [server/app.js](server/app.js)
