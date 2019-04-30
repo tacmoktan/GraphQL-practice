@@ -9,12 +9,12 @@ class BookList extends Component{
         if(data.loading)                     //loading: true
             return "Loading...";
         else
-            return data.books.map( book => (<li> {book.name} </li>) );       //returning JSX element
+            return data.books.map( book => (<li key={book.id}> {book.name} </li>) );       //returning JSX element
 
     }
 
     render(){
-        console.log(this.props.data.loading);          //checking if query fetches data from db
+        //console.log(this.props.data);          //checking if query fetches data from db
         return (
             <div>
                 <ul id="book-list">

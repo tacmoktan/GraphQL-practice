@@ -4,6 +4,7 @@ import  { ApolloProvider } from 'react-apollo';
 
 //components
 import BookList from './Component/BookList.js';
+import AddBook from './Component/AddBook';
 
 //create client
 const client = new ApolloClient({
@@ -18,6 +19,7 @@ function App() {
       <div id="main">                        {/* using data fetched from endpoint above.   */}
           <h1> Reading List </h1>
           <BookList />
+          <AddBook />
       </div>
     </ApolloProvider>
 
