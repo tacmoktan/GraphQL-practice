@@ -34,8 +34,8 @@ const BookType = new GraphQLObjectType({
         author: {
             type: AuthorType,                    //'resolve functions' respond to queries   
             resolve(parent, args) {              //parent of Author = Book
-                //return _.find(authors, { id: parent.authorId });     //find authors of respective books using authorId
-                return Author.findById(parent.authorId);
+                //return _.find(authors, { id: parent.authorId });     //finds first author with matching authorId with
+                return Author.findById(parent.authorId);               //its respective book
             }
         }
     })
@@ -47,11 +47,11 @@ const AuthorType = new GraphQLObjectType({
         id: {type: GraphQLID},
         name: {type : GraphQLString },
         age: {type: GraphQLInt},
-        book:{                                 //since an Author writes many books we use GraphQLList
+        books:{                                 //since an Author writes many books we use GraphQLList
             type: new GraphQLList(BookType),    //denotes list of BookTypes
             resolve(parent, args){
                 //return _.filter(books, { authorId: parent.id });      //filter books written by a specific author
-                return Book.findById( parent.id )            //using authorId
+                return Book.find({authorId: parent.id} )                //using authorId
             }
         }
     })
