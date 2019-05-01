@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAuthorsQuery, addBookMutation } from '../queries/queries';
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queries/queries';
 import { graphql, compose } from 'react-apollo';
 
 class AddBook extends React.Component{
@@ -28,13 +28,14 @@ class AddBook extends React.Component{
 
     //onSubmit              //no need to bind `this` in arrowfunction, since (`this`) meaning don't change within it.
     submitForm = (e) => {
-        e.preventDefault();             //prevents refreshing page when button is clicked
+        e.preventDefault();             //prevents refreshing page when button is clicked.
         this.props.addBookMutation({    //acts as function
             variables: {
                 name: this.state.name,
                 genre: this.state.genre,
                 authorId: this.state.authorId
-            }
+            },
+            refetchQueries: [ {query: getBooksQuery} ]    //this refetches query & we see books added without page-refresh
         });   
     }
 

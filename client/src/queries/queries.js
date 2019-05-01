@@ -20,13 +20,34 @@ const getAuthorsQuery = gql`
         }
     }
 `
-/* using query variables */
+// using query variables , '!' refers to not null
 const addBookMutation = gql`
-    mutation($name:String!, $genre:String!, $authorId:ID!){             
-        addBook( name:$name, genre:$genre, authorId:$authorId ){
+    mutation( $name: String!, $genre: String!, $authorId: ID! ){             
+        addBook( name: $name, genre: $genre, authorId: $authorId ){
             name
             id
         }
     }
 `
-export { getBooksQuery, getAuthorsQuery, addBookMutation }
+
+//book details query
+const getBookDetailsQuery = gql`
+    query( $id: ID! ){
+        book( id: $id ){
+            name
+            genre
+            id
+            author{
+                id
+                name
+                age
+                books{
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
+export { getBooksQuery, getAuthorsQuery, addBookMutation, getBookDetailsQuery }
