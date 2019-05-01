@@ -28,13 +28,18 @@ class AddBook extends React.Component{
 
     //onSubmit              //no need to bind `this` in arrowfunction, since (`this`) meaning don't change within it.
     submitForm = (e) => {
-        e.preventDefault();         //prevents refreshing page when button is clicked
-        let data = this.props.addBookMutation;
-        //console.log(this.state);
+        e.preventDefault();             //prevents refreshing page when button is clicked
+        this.props.addBookMutation({    //acts as function
+            variables: {
+                name: this.state.name,
+                genre: this.state.genre,
+                authorId: this.state.authorId
+            }
+        });   
     }
 
     render(){
-        console.log(this.props);         //checking if data is fetched
+        //console.log(this.props);         //checking if data is fetched
         return (
             <form onSubmit={this.submitForm}>
                 <h3>Add Books</h3>
